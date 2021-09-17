@@ -7,7 +7,6 @@
     "@midwayjs/decorator": "^2.12.3",
     "@midwayjs/orm": "^2.12.3",
     "@midwayjs/web": "^2.12.3",
-    "chalk": "^4.1.2",
     "egg": "^2.30.0",
     "egg-scripts": "^2.14.0",
     "egg-view-nunjucks": "^2.3.0",

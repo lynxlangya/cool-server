@@ -20,15 +20,15 @@ import * as oss from 'midwayjs-cool-oss';
     // oss插件，需要到后台配置之后才有用，默认是本地上传
     oss,
     // 将缓存替换成redis
-    //redis,
-    // 队列
-    //queue,
-    // 微信支付
-    //wxpay,
-    // 支付宝支付
-    //alipay,
-    // socket
-    //socket,
+    // redis,
+    // // 队列
+    // queue,
+    // // 微信支付
+    // wxpay,
+    // // 支付宝支付
+    // alipay,
+    // // socket
+    // socket,
   ],
 })
 export class ContainerLifeCycle implements ILifeCycle {

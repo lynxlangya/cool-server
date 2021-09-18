@@ -1,17 +1,10 @@
 /** service */
-
 import { Provide } from '@midwayjs/decorator';
-
-export interface User {
-  id: number;
-  name: string;
-  age: number;
-  description: string;
-}
-
+import { User } from '../interface';
 @Provide()
 export class UserService {
   async getUsers(id: number): Promise<User> {
+    console.log(`%c id------- ${id}`, 'color: #4CAF50; font-weight: bold');
     return {
       id,
       name: 'MARS',

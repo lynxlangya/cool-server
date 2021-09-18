@@ -1,10 +1,12 @@
 import {
+  Body,
   Get,
   Inject,
   Post,
   Provide,
-  Query,
   Redirect,
+  RequestIP,
+  RequestPath,
   SetHeader,
 } from '@midwayjs/decorator';
 import { CoolController, BaseController } from 'midwayjs-cool-core';
@@ -54,8 +56,9 @@ export class NewAdminCategoriesController extends BaseController {
   @Inject()
   userService: UserService;
   @Post('/stock', { middleware: ['loggerMiddleware'] })
-  async stock(@Query('id') uid: number) {
-    const user = await this.userService.getUsers(uid);
+  async stock(@Body() id: any) {
+    // 获取 body 下所有属性，@Body(ALL) param: any
+    const user = await this.userService.getUsers(id);
     return this.ok(user);
   }
 
@@ -64,5 +67,14 @@ export class NewAdminCategoriesController extends BaseController {
   @Redirect('/admin/news/categories/other')
   async redirect() {
     return this.ok('Hello This is Redirect - GET');
+  }
+
+  @Post('/path')
+  // @ContentType('html')
+  async path(@RequestPath() path: string, @RequestIP() ip: string) {
+    console.log('PATH--------', path);
+    console.log('IP--------', ip);
+    const data = { path, ip };
+    return this.ok(data);
   }
 }

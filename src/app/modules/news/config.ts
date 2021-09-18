@@ -11,7 +11,7 @@ export default (app: Application) => {
     // 模块描述
     description: '简单新闻模块',
     // 中间件，只对本模块有效
-    middlewares: ['reportMiddleware'],
+    middlewares: ['reportMiddleware', 'addressMiddleware'],
     // 中间件，全局有效
     globalMiddlewares: [],
     // 模块加载顺序，默认为0，值越大越优先加载

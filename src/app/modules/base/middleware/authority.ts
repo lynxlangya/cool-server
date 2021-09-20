@@ -45,7 +45,7 @@ export class BaseAuthorityMiddleware implements IWebMiddleware {
         }
         if (ctx.admin) {
           // 超管拥有所有权限
-          if (ctx.admin.username == 'admin' && !ctx.admin.isRefresh) {
+          if (ctx.admin.username === 'admin' && !ctx.admin.isRefresh) {
             await next();
             return;
           }

@@ -9,6 +9,7 @@
     "middlewares",
     "midwayjs",
     "mwts",
+    "RESCODE",
     "tsbuildinfo",
     "typeorm",
     "wxpay"

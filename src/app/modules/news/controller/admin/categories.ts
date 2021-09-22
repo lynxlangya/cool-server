@@ -49,7 +49,6 @@ export class NewAdminCategoriesController extends BaseController {
   })
   async other() {
     this.logger.error('---> Logger 测试');
-    console.log(this.ctx);
     const obj = {
       list: [{ name: '1', id: 2 }],
       message: 'Hello this is /other api - GET',

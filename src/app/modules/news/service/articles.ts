@@ -25,8 +25,8 @@ export class NewsArticlesService extends BaseService {
    * 描述
    */
   async list() {
-    console.log(this.ctx);
     const info = await this.newsArticlesEntity.find();
+    // this.list();
     return info;
   }
 }

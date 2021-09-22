@@ -24,7 +24,7 @@ export class NewsArticlesEntity extends BaseEntity {
   tags: string;
 
   @Column({ comment: '文章类别' })
-  categories: number;
+  categoriesId: number;
 
   @Column({ comment: '文章概要', length: 200 })
   outline: string;

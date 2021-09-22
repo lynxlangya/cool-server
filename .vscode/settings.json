@@ -13,5 +13,21 @@
     "tsbuildinfo",
     "typeorm",
     "wxpay"
+  ],
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "wangdaoo",
+      "group": "local",
+      "database": "cool",
+      "username": "root",
+      "password": "wangdaoo"
+    }
   ]
 }

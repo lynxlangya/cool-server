@@ -10,4 +10,4 @@ import { NewsArticlesEntity } from '../../entity/articles';
   api: ['add', 'delete', 'update', 'info', 'list', 'page'],
   entity: NewsArticlesEntity,
 })
-export class NewsOpenArticlesController extends BaseController {}
+export class OpenNewsArticlesController extends BaseController {}

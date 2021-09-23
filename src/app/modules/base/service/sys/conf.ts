@@ -28,7 +28,7 @@ export class BaseSysConfService extends BaseService {
    * @param cKey
    * @param cValue
    */
-  async updateVaule(cKey, cValue) {
+  async updateValue(cKey, cValue) {
     await this.baseSysConfEntity
       .createQueryBuilder()
       .update()

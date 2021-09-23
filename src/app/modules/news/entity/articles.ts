@@ -23,8 +23,12 @@ export class NewsArticlesEntity extends BaseEntity {
   @Column({ comment: '文章标签', nullable: true })
   tags: string;
 
-  @Column({ comment: '文章类别' })
+  @Column({ comment: '文章类别ID' })
   categoriesId: number;
+
+  /** 文章类别名称 */
+  @Column({ comment: '文章类别名称' })
+  categoriesName: string;
 
   @Column({ comment: '文章概要', length: 200 })
   outline: string;

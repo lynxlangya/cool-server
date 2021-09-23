@@ -112,11 +112,12 @@ export class BaseSysLoginService extends BaseService {
    * @param width 宽
    * @param height 高
    */
-  async captcha(type: string, width = 150, height = 50) {
+  async captcha(type: string, width = 150, height = 50, color = false) {
     const svg = svgCaptcha.create({
       ignoreChars: 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM',
       width,
       height,
+      color,
     });
     const result = {
       captchaId: uuid(),
@@ -134,7 +135,9 @@ export class BaseSysLoginService extends BaseService {
       '#888',
       '#999',
     ];
+    console.log('color', color);
     rpList.forEach(rp => {
+      console.log(rp);
       result.data = result.data['replaceAll'](rp, '#fff');
     });
     if (type === 'base64') {

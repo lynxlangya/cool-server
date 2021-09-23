@@ -33,7 +33,7 @@ export class NewsArticlesEntity extends BaseEntity {
   @Column({ comment: '文章概要', length: 200 })
   outline: string;
 
-  @Column({ comment: '文章详情' })
+  @Column({ comment: '文章详情', type: 'text' })
   content: string;
 
   @Column({ comment: '阅读数量', nullable: true })

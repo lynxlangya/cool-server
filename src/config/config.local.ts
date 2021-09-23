@@ -20,6 +20,8 @@ export default (appInfo: EggAppInfo) => {
     logging: true,
     // 字符集
     charset: 'utf8mb4',
+    /** 记录超过 1s 的查询 */
+    maxQueryExecutionTime: 1000,
   };
 
   config.logger = {

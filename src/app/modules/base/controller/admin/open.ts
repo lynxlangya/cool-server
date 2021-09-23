@@ -52,9 +52,12 @@ export class BaseOpenController extends BaseController {
   async captcha(
     @Query() type: string,
     @Query() width: number,
-    @Query() height: number
+    @Query() height: number,
+    @Query() color?: boolean
   ) {
-    return this.ok(await this.baseSysLoginService.captcha(type, width, height));
+    return this.ok(
+      await this.baseSysLoginService.captcha(type, width, height, color)
+    );
   }
 
   /**

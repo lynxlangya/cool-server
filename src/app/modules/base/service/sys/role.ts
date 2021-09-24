@@ -37,9 +37,7 @@ export class BaseSysRoleService extends BaseService {
   async getByUser(userId: number): Promise<number[]> {
     const userRole = await this.baseSysUserRoleEntity.find({ userId });
     if (!_.isEmpty(userRole)) {
-      return userRole.map(e => {
-        return e.roleId;
-      });
+      return userRole.map(e => e.roleId);
     }
     return [];
   }

@@ -103,6 +103,7 @@ export class BaseSysUserService extends BaseService {
     if (user.username === 'admin') {
       throw new CoolCommException('非法操作~');
     }
+    /** 新增、编辑都是直接覆盖 */
     await this.baseSysUserRoleEntity.delete({ userId: user.id });
     if (user.roleIdList) {
       for (const roleId of user.roleIdList) {

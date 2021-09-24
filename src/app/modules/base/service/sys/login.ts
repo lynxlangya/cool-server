@@ -137,7 +137,6 @@ export class BaseSysLoginService extends BaseService {
     ];
     console.log('color', color);
     rpList.forEach(rp => {
-      console.log(rp);
       result.data = result.data['replaceAll'](rp, '#fff');
     });
     if (type === 'base64') {

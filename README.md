@@ -26,24 +26,13 @@
 * 密码：123456
 
 <img src="https://cool-show.oss-cn-shanghai.aliyuncs.com/admin/home-mini.png" alt="Admin Home"></a>
+
 #### 文档
 [https://admin.cool-js.com](https://admin.cool-js.com)
 
 #### 项目前端
 
 [https://github.com/cool-team-official/cool-admin-vue](https://github.com/cool-team-official/cool-admin-vue)
-
-## QQ群
-2群：539478405
-
-## 微信群
-
-<img width="260" src="https://cool-show.oss-cn-shanghai.aliyuncs.com/admin/wechat.jpeg" alt="Admin Wechat"></a>
-
-## 微信公众号
-
-<img width="260" src="https://cool-show.oss-cn-shanghai.aliyuncs.com/admin/mp.jpg" alt="Admin Wechat"></a>
-
 
 ## 运行
 

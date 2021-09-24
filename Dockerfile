@@ -18,9 +18,9 @@ RUN npm install
 COPY . .
 RUN npm run build
 # 删除开发期依赖
-RUN rm -rf node_modules && rm package-lock.json    
-# 安装开发环境依赖   
-RUN npm install --production                          
+RUN rm -rf node_modules && rm package-lock.json
+# 安装开发环境依赖
+RUN npm install --production
 
 # 如果端口更换，这边可以更新一下
 EXPOSE 7001

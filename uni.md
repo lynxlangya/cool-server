@@ -26,18 +26,6 @@
 
 [https://github.com/cool-team-official/cool-admin-vue](https://github.com/cool-team-official/cool-admin-vue)
 
-## QQ群
-2群：539478405
-
-## 微信群
-
-![](https://cool-show.oss-cn-shanghai.aliyuncs.com/admin/wechat.jpeg?x-oss-process=image/resize,h_260,m_lfit)
-
-## 微信公众号
-
-![](https://cool-show.oss-cn-shanghai.aliyuncs.com/admin/mp.jpg?x-oss-process=image/resize,h_260,m_lfit)
-
-
 ## 运行
 
 #### 修改数据库配置，配置文件位于`src/config/config.local.ts`

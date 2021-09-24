@@ -23,19 +23,10 @@ export class NewsArticlesService extends BaseService {
   @InjectEntityModel(NewCategoriesEntity)
   newCategoriesEntity: Repository<NewCategoriesEntity>;
   /**
-   * 描述
-   */
-  async list() {
-    const info = await this.newsArticlesEntity.find();
-    // this.list();
-    return info;
-  }
-
-  /**
    * @func 新增
    * @param {Object} param
    */
-  async add(param) {
+  async add(param: any) {
     const categories = await this.newCategoriesEntity.findOne({
       id: param.categoriesId,
     });
@@ -46,6 +37,10 @@ export class NewsArticlesService extends BaseService {
     return param.id;
   }
 
+  /**
+   * @func 获取文章详细信息
+   * @param {number} id
+   */
   async info(id: number) {
     /** 获取文章信息 */
     const info = await this.newsArticlesEntity.findOne({ id });
@@ -53,7 +48,37 @@ export class NewsArticlesService extends BaseService {
     const categories = await this.newCategoriesEntity.findOne({
       id: info.categoriesId,
     });
+    /** 分类名称赋值 */
     info.categoriesName = categories.name;
     return info;
+  }
+
+  /**
+   * @func 获取所有文章
+   */
+  async list() {
+    const sql = `SELECT
+      a.*,
+      b.name AS categoriesName
+    FROM
+      news_articles a
+      LEFT JOIN news_categories b ON b.id = a.categoriesId;`;
+    const list = await this.newsArticlesEntity.query(sql);
+    return list;
+  }
+
+  /**
+   * @func 分页查询处理
+   * @desc 📝
+   */
+  page(query) {
+    // const { keyWord } = query;
+    const sql = `SELECT
+      a.*,
+      b.name AS categoriesName
+    FROM
+      news_articles a
+      LEFT JOIN news_categories b ON b.id = a.categoriesId;`;
+    return this.sqlRenderPage(sql, query);
   }
 }

@@ -38,6 +38,19 @@ export class NewsArticlesService extends BaseService {
   }
 
   /**
+   * @func 编辑
+   * @param {Object} param
+   */
+  async update(param) {
+    const exist = await this.newsArticlesEntity.findOne({ id: param.id });
+    if (_.isEmpty(exist)) {
+      throw new CoolCommException('文章不存在~');
+    }
+    await this.newsArticlesEntity.save(param);
+    return param.id;
+  }
+
+  /**
    * @func 获取文章详细信息
    * @param {number} id
    */
@@ -57,7 +70,8 @@ export class NewsArticlesService extends BaseService {
    * @func 获取所有文章
    */
   async list() {
-    const sql = `SELECT
+    const sql = `
+    SELECT
       a.*,
       b.name AS categoriesName
     FROM
@@ -73,34 +87,21 @@ export class NewsArticlesService extends BaseService {
    */
   async page(query: any) {
     const { keyWord, author } = query;
-    const sql = `SELECT
+    const sql = `
+    SELECT
       a.*,
       b.name AS categoriesName
     FROM
       news_articles a
       LEFT JOIN news_categories b ON b.id = a.categoriesId
-      WHERE 1 = 1
+    WHERE 1 = 1
       ${this.setSql(
         keyWord,
         'AND (a.title LIKE ? OR a.outline LIKE ? OR a.content LIKE ?)',
         [`%${keyWord}%`, `%${keyWord}%`, `%${keyWord}%`]
       )}
       ${this.setSql(author, 'AND (a.author LIKE ?)', [`%${author}%`])}
-      `;
-    // const sql = `
-    //     SELECT
-    //     a.*,
-    //     b.NAME AS categoriesName
-    //   FROM
-    //     news_articles a
-    //     LEFT JOIN news_categories b ON b.id = a.categoriesId
-    //   WHERE
-    //     1 = 1
-    //     AND a.title LIKE '%${keyWord}%'
-    //     OR a.content LIKE '%${keyWord}%'
-    //     OR a.author LIKE '%${keyWord}%'
-    //     OR a.outline LIKE '%${keyWord}%'
-    //   `;
+    `;
     return this.sqlRenderPage(sql, query);
   }
 }

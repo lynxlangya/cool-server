@@ -72,7 +72,7 @@ export class NewsArticlesService extends BaseService {
    * @param {Object} query
    */
   async page(query: any) {
-    const { keyWord } = query;
+    const { keyWord, author } = query;
     const sql = `SELECT
       a.*,
       b.name AS categoriesName
@@ -80,11 +80,27 @@ export class NewsArticlesService extends BaseService {
       news_articles a
       LEFT JOIN news_categories b ON b.id = a.categoriesId
       WHERE 1 = 1
-      ${this.setSql(keyWord, 'AND (a.title LIKE ? or a.content LIKE ?)', [
-        `%${keyWord}%`,
-        `%${keyWord}%`,
-      ])}
+      ${this.setSql(
+        keyWord,
+        'AND (a.title LIKE ? OR a.outline LIKE ? OR a.content LIKE ?)',
+        [`%${keyWord}%`, `%${keyWord}%`, `%${keyWord}%`]
+      )}
+      ${this.setSql(author, 'AND (a.author LIKE ?)', [`%${author}%`])}
       `;
+    // const sql = `
+    //     SELECT
+    //     a.*,
+    //     b.NAME AS categoriesName
+    //   FROM
+    //     news_articles a
+    //     LEFT JOIN news_categories b ON b.id = a.categoriesId
+    //   WHERE
+    //     1 = 1
+    //     AND a.title LIKE '%${keyWord}%'
+    //     OR a.content LIKE '%${keyWord}%'
+    //     OR a.author LIKE '%${keyWord}%'
+    //     OR a.outline LIKE '%${keyWord}%'
+    //   `;
     return this.sqlRenderPage(sql, query);
   }
 }

@@ -62,23 +62,29 @@ export class NewsArticlesService extends BaseService {
       b.name AS categoriesName
     FROM
       news_articles a
-      LEFT JOIN news_categories b ON b.id = a.categoriesId;`;
+      LEFT JOIN news_categories b ON b.id = a.categoriesId`;
     const list = await this.newsArticlesEntity.query(sql);
     return list;
   }
 
   /**
    * @func 分页查询处理
-   * @desc 📝
+   * @param {Object} query
    */
-  page(query) {
-    // const { keyWord } = query;
+  async page(query: any) {
+    const { keyWord } = query;
     const sql = `SELECT
       a.*,
       b.name AS categoriesName
     FROM
       news_articles a
-      LEFT JOIN news_categories b ON b.id = a.categoriesId;`;
+      LEFT JOIN news_categories b ON b.id = a.categoriesId
+      WHERE 1 = 1
+      ${this.setSql(keyWord, 'AND (a.title LIKE ? or a.content LIKE ?)', [
+        `%${keyWord}%`,
+        `%${keyWord}%`,
+      ])}
+      `;
     return this.sqlRenderPage(sql, query);
   }
 }

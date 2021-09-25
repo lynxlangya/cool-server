@@ -33,6 +33,9 @@ export class NewsArticlesService extends BaseService {
     if (_.isEmpty(categories)) {
       throw new CoolCommException('分类不存在~');
     }
+    /** 新增统计文章数量 */
+    categories.article_count += 1;
+    await this.newCategoriesEntity.save(categories);
     await this.newsArticlesEntity.save(param);
     return param.id;
   }

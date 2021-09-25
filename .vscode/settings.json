@@ -10,6 +10,7 @@
     "midwayjs",
     "mwts",
     "RESCODE",
+    "tinyint",
     "tsbuildinfo",
     "typeorm",
     "wxpay"

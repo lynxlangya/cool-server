@@ -48,9 +48,10 @@ export class NewsArticlesService extends BaseService {
     /** 文章是否存在 */
     const exist = await this.newsArticlesEntity.findOne({ id: param.id });
     /** 更改前 - 文章分类归属 */
-    const oldInfo = await this.newCategoriesEntity.findOne({
-      id: exist.categoriesId,
-    });
+    const oldInfo = await this.newCategoriesEntity
+      .createQueryBuilder()
+      .where(`id = ${exist.categoriesId}`)
+      .getOne();
     /** 更改后 - 文章分类归属 */
     const newInfo = await this.newCategoriesEntity.findOne({
       id: param.categoriesId,

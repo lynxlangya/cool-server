@@ -15,7 +15,7 @@ export default (appInfo: EggAppInfo) => {
     password: 'wangdaoo',
     database: 'cool',
     // 自动建表 注意：线上部署的时候不要使用，有可能导致数据丢失
-    synchronize: false,
+    synchronize: true,
     // 打印日志
     logging: true,
     // 字符集

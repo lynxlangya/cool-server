@@ -62,7 +62,7 @@ export class BaseSysLogService extends BaseService {
       const beforeDate = `${moment()
         .add(-keepDay, 'days')
         .format('YYYY-MM-DD')} 00:00:00`;
-      await this.baseSysLogEntity
+      this.baseSysLogEntity
         .createQueryBuilder()
         .where('createTime < :createTime', { createTime: beforeDate });
       await this.nativeQuery(

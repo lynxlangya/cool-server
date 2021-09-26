@@ -14,8 +14,17 @@ export class NewsCategoriesService extends BaseService {
   newsArticlesEntity: Repository<NewsArticlesEntity>;
 
   /** 根据分类id获取文章列表 */
-  async getArticles(id: number): Promise<any> {
-    const sql = `select * from news_articles where categoriesId = ${id}`;
-    return await this.nativeQuery(sql);
+  async getArticles(id: number, order?: string): Promise<any> {
+    const find = this.newsArticlesEntity.createQueryBuilder();
+    if (order) {
+      find.orderBy('readingsNumber', order === 'asc' ? 'ASC' : 'DESC');
+    }
+    find.where(`categoriesId = ${id}`);
+    const list = await find.getManyAndCount();
+    const info = {
+      list: list[0],
+      count: list[1],
+    };
+    return info;
   }
 }

@@ -23,9 +23,9 @@ export class OpenNewCategoriesController extends BaseController {
 
   /** 根据分类 id 获取文章 */
   @Get('/getArticles')
-  async stock(@Query('id') id: number) {
+  async stock(@Query() id: number, @Query() order?: string) {
     //  const list = await this.newsArticlesEntity.query(sql);
-    const list = await this.newsCategoriesService.getArticles(id);
+    const list = await this.newsCategoriesService.getArticles(id, order);
     return this.ok(list);
   }
 }

@@ -45,7 +45,22 @@ export class NewsArticlesService extends BaseService {
    * @param {Object} param
    */
   async update(param: any) {
+    /** 文章是否存在 */
     const exist = await this.newsArticlesEntity.findOne({ id: param.id });
+    /** 更改前 - 文章分类归属 */
+    const oldInfo = await this.newCategoriesEntity.findOne({
+      id: exist.categoriesId,
+    });
+    /** 更改后 - 文章分类归属 */
+    const newInfo = await this.newCategoriesEntity.findOne({
+      id: param.categoriesId,
+    });
+    /** 判断文章分类归属是否有变化 */
+    if (oldInfo.id !== newInfo.id) {
+      oldInfo.article_count -= 1;
+      newInfo.article_count += 1;
+      await this.newCategoriesEntity.save(newInfo);
+    }
     if (_.isEmpty(exist)) {
       throw new CoolCommException('文章不存在~');
     }

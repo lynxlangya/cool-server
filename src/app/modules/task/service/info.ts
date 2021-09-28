@@ -177,14 +177,14 @@ export class TaskInfoService extends BaseService {
     return await this.sqlRenderPage(
       `
       SELECT
-          a.*,
-          b.NAME AS taskName
+        a.*,
+        b.NAME AS taskName
       FROM
-      task_log a
+        task_log a
       JOIN task_info b ON a.taskId = b.id
-      where 1=1
-      ${this.setSql(id, 'and a.taskId = ?', [id])}
-      ${this.setSql(status, 'and a.status = ?', [status])}
+      WHERE 1=1
+        ${this.setSql(id, 'and a.taskId = ?', [id])}
+        ${this.setSql(status, 'and a.status = ?', [status])}
       `,
       query
     );
@@ -208,9 +208,9 @@ export class TaskInfoService extends BaseService {
       task_log a,
           ( SELECT id FROM task_log where taskId = ? AND status = 1 ORDER BY id DESC LIMIT ?, 1 ) b
       WHERE
-      a.taskId = ? AND
-      a.status = 1 AND
-      a.id < b.id`,
+        a.taskId = ? AND
+        a.status = 1 AND
+        a.id < b.id`,
       [task.id, 19, task.id]
     ); // 日志保留最新的20条
   }

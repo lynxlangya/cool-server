@@ -34,8 +34,3 @@ export default (appInfo: EggAppInfo) => {
 
   return config;
 };
-
-// test
-// test
-// test
-// test

@@ -10,6 +10,9 @@ RUN apk add --no-cache tzdata
 # 设置时区为中国东八区，这里的配置可以被docker-compose.yml或docker run时指定的时区覆盖
 ENV TZ="Asia/Shanghai"
 
+# 查看环境变量（暂时未使用到，后期做优化处理）
+RUN env
+
 # 如果各公司有自己的私有源，可以替换registry地址,如使用官方源注释下一行
 # RUN npm config set registry https://repo.huaweicloud.com/repository/npm/
 

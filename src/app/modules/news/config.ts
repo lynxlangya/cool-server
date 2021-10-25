@@ -13,7 +13,7 @@ export default (app: Application) => {
     // 中间件，只对本模块有效
     middlewares: ['reportMiddleware', 'addressMiddleware'],
     // 中间件，全局有效
-    globalMiddlewares: [],
+    globalMiddlewares: ['corsMiddleware'],
     // 模块加载顺序，默认为0，值越大越优先加载
     order: 0,
   } as ModuleConfig;
